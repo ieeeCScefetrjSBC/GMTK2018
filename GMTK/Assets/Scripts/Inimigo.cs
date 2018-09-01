@@ -94,7 +94,7 @@ public class Inimigo : MonoBehaviour {
         Player.Instance.defenceWindow = false;
         Player.Instance.Atacker = null;
         Stun(stunTime);
-        rb.AddForce(32005* (transform.position - Player.Instance.transform.position).normalized);
+        rb.AddForce(320050* (transform.position - Player.Instance.transform.position).normalized);
     }
 
     public void Kill()
