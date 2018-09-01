@@ -9,7 +9,7 @@ public class Traphole : MonoBehaviour
 
 	void Start () 
 	{
-		
+		 
 	}
 	
 	void OnTriggerEnter2D(Collider2D enemy)
