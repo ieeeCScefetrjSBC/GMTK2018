@@ -81,6 +81,18 @@ public class AI01 : Inimigo
         }
     }
 
+    private void FindClearWay()
+    {
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, Player.Instance.transform.position);
+
+        if (hit.collider.gameObject.tag != "Player")
+        {
+
+        }
+    }
+
+
     private void Atack()
     {
         sp.sprite = Ataque;
