@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public Player Instance;
+    public static Player Instance;
     public float Vel;
     Vector2 vel;
     Rigidbody2D rb;

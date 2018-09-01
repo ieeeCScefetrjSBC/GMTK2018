@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 221520713}
   - component: {fileID: 221520714}
+  - component: {fileID: 221520715}
   m_Layer: 0
   m_Name: Long
   m_TagString: Long
@@ -157,6 +158,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05944695, y: 0.38871127}
   m_Size: {x: 0.3256178, y: 0.70607686}
   m_Direction: 0
+--- !u!70 &221520715
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221520712}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05944695, y: -0.3887113}
+  m_Size: {x: 0.3256178, y: 0.70607686}
+  m_Direction: 0
 --- !u!1 &507494673
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 507494673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b032e300b82189247a9f26be65b31694, type: 3}
+  m_Script: {fileID: 11500000, guid: e19b93c821406bc49bad350126fe4581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Vel: 2
@@ -281,7 +297,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,9 +402,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 597736962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3eab969e688d841a13a5e7d6914dd2, type: 3}
+  m_Script: {fileID: 11500000, guid: b20f70e90bca9aa4493554e0533edd86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkingTime: 1
+  thinkingTime: 0.5
+  tellTime: 0.5
+  Vel: 0.5
+  MaxVel: 1.5
+  smallValue: 0.11
+  sp: {fileID: 597736966}
+  Ataque: {fileID: 21300056, guid: 848fe009912a92f44b8b3cd4bea9235e, type: 3}
 --- !u!58 &597736964
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -415,15 +439,15 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 50
+  m_LinearDrag: 10
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &597736966
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -477,7 +501,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 597736962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.589, y: 0.19, z: 0}
+  m_LocalPosition: {x: 2.452, y: 0.587, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 221520713}
@@ -495,6 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 754195313}
   - component: {fileID: 754195314}
+  - component: {fileID: 754195315}
   m_Layer: 0
   m_Name: Short
   m_TagString: Short
@@ -530,6 +555,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05944695, y: 0.19848305}
   m_Size: {x: 0.32561722, y: 0.32561737}
   m_Direction: 0
+--- !u!70 &754195315
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 754195312}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.05944695, y: -0.198483}
+  m_Size: {x: 0.32561722, y: 0.32561737}
+  m_Direction: 0
 --- !u!1 &882600307
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 882600308}
   - component: {fileID: 882600309}
+  - component: {fileID: 882600310}
   m_Layer: 0
   m_Name: Medium
   m_TagString: Medium
@@ -572,5 +613,20 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.059446953, y: 0.30152348}
+  m_Size: {x: 0.32561746, y: 0.5316993}
+  m_Direction: 0
+--- !u!70 &882600310
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 882600307}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.059446953, y: -0.3015235}
   m_Size: {x: 0.32561746, y: 0.5316993}
   m_Direction: 0

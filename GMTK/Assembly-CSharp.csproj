@@ -61,9 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AI01.cs" />
-    <Compile Include="Assets\Inimigo.cs" />
-    <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\Scripts\AI01.cs" />
     <Compile Include="Assets\Scripts\Inimigo.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Reference Include="UnityEditor.StandardEvents">
