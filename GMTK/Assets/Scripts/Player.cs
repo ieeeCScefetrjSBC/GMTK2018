@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
-    public Player Instance;
+    public static Player Instance;
     public float Vel;
     Vector2 vel;
     Rigidbody2D rb;
-	
-	void Start () {
+
+    void Start()
+    {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
-	}
-	
-	
-	void Update () {
+    }
+
+
+    void Update()
+    {
         vel = Vector2.zero;
         if (Input.GetKey(KeyCode.W)) vel += Vector2.up;
         if (Input.GetKey(KeyCode.S)) vel += Vector2.down;
