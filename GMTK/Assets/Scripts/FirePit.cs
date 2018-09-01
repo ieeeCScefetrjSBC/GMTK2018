@@ -5,21 +5,18 @@ using UnityEngine;
 public class FirePit : MonoBehaviour
 {
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        string colliderTag = collision.gameObject.tag;
 
-        // LEMBRAR DE CRIAR TAGS
-        if (colliderTag == "Player")
+        Player playerScript = collision.gameObject.GetComponent<Player>();
+        if(playerScript != null) playerScript.SetOnFire();
+
+        Inimigo enemyScript = collision.gameObject.GetComponent<Inimigo>();
+        if (enemyScript != null)
         {
-            Player playerScript = collision.gameObject.GetComponent<Player>();
-            //playerScript.SetOnFire();
+            if (!enemyScript.isOnFire)
+                enemyScript.SetOnFire();
         }
-        if (colliderTag == "Enemy")
-        {
-            Inimigo enemyScript = collision.gameObject.GetComponent<Inimigo>();
-            //if (!enemyScript.IsOnFire)
-            //  enemyScript.SetOnFire();
-        }
+        
     }
 }

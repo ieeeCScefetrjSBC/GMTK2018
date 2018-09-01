@@ -11,10 +11,9 @@ public class Inimigo : MonoBehaviour {
 
     private float health;
     private float timeWasStunned;
-    private float timeSetOnFire;
 
     protected bool isStunned = false;
-    protected bool isOnFire = false;
+    public bool isOnFire = false;
 
     //public bool IsStunned { get; set; }
     //public bool IsOnFire { get; set; }
@@ -33,8 +32,6 @@ public class Inimigo : MonoBehaviour {
     public void StartCode()
     {
         health = maxHealth;
-       // timeWasStunned = -stunTime;
-        timeSetOnFire = -onFireTime;
     }
 
     public void UpdateCode()
@@ -42,9 +39,7 @@ public class Inimigo : MonoBehaviour {
 
         if (isOnFire)
         {
-            if (Time.time - timeSetOnFire > onFireTime)
-                isOnFire = false;
-            else
+            if (isOnFire)
                 health -= fireDamagePerSec * Time.deltaTime;
         }
 
@@ -83,8 +78,13 @@ public class Inimigo : MonoBehaviour {
 
     public void SetOnFire()
     {
-        timeSetOnFire = Time.time;
         isOnFire = true;
+        Invoke("UnSetOnFire", onFireTime);
+    }
+
+    public void UnSetOnFire()
+    {
+        isOnFire = false;
     }
 
     public void Stop() {
@@ -92,9 +92,9 @@ public class Inimigo : MonoBehaviour {
         sp.sprite = Original;
         hitting = false;
         Player.Instance.defenceWindow = false;
-        Player.Instance.Atacker = null;
+        Player.Instance.Atacker.Remove(this);
         Stun(stunTime);
-        rb.AddForce(320050* (transform.position - Player.Instance.transform.position).normalized);
+        rb.AddForce(32005* (transform.position - Player.Instance.transform.position).normalized);
     }
 
     public void Kill()
