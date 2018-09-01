@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour {
 
-    public float maxHealth        = 100f;
-    public float fireDamagePerSec = 5f;
-    public float stunTime         = 3f;
-    public float onFireTime       = 2f;
+    public float  maxHealth        = 100f;
+    public float  fireDamagePerSec = 5f;
+    public float  stunTime         = 3f;
+    public float  onFireTime       = 2f;
 
     private float health;
     private float timeWasStunned;
@@ -15,6 +15,9 @@ public class Inimigo : MonoBehaviour {
 
     private bool  isStunned = false;
     private bool  isOnFire  = false;
+
+    public  bool  IsStunned { get; set; }
+    public  bool  IsOnFire  { get; set; }
 
     public void StartCode ()
     {
@@ -37,7 +40,7 @@ public class Inimigo : MonoBehaviour {
         }
 
         if (health <= 0f)
-            Die();
+            Kill();
     }
 
     public void Damage (float damage)
@@ -45,9 +48,10 @@ public class Inimigo : MonoBehaviour {
         health -= damage;
     }
 
-    public void Stun()
+    public void Stun(float stunTime)
     {
         timeWasStunned = Time.time;
+        this.stunTime = stunTime;
         isStunned = true;
     }
 
@@ -57,7 +61,7 @@ public class Inimigo : MonoBehaviour {
         isOnFire = true;
     }
 
-    private void Die()
+    public void Kill()
     {
         Destroy(this.gameObject);
     }
