@@ -45,3 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Gatino
+    uniqueID: 2697273719
+    locked: 0
+  - name: Raphael
+    uniqueID: 945376967
+    locked: 0
