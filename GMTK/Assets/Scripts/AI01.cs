@@ -18,7 +18,8 @@ public class AI01 : Inimigo
     float restartTimer;
     float thinkingTimer;
 
-    
+    [SerializeField]
+    bool moveUp;
 
     [SerializeField]
     float Vel;
@@ -26,6 +27,8 @@ public class AI01 : Inimigo
     float MaxVel;
     [SerializeField]
     float smallValue;
+
+    private bool fronter;
     
 
 
@@ -34,6 +37,7 @@ public class AI01 : Inimigo
     void Start()
     {
         StartCode();
+        fronter = Random.value > 0.5f;
         rb = GetComponent<Rigidbody2D>();
         //sp.GetComponent<SpriteRenderer>();
         Original = sp.sprite;
@@ -56,24 +60,26 @@ public class AI01 : Inimigo
         {
             if (!possibleHit)
             {
-                string seen = Look((((Vector2)Player.Instance.transform.position) - ((Vector2)transform.position)), 1000);
-                Debug.Log(seen);
-                if (seen == "Player")
+
+                if ((Time.timeSinceLevelLoad - restartTimer) % Turn < walkingTime)
                 {
-                    if ((Time.timeSinceLevelLoad - restartTimer) % Turn < walkingTime)
+                    string seen = Look((((Vector2)Player.Instance.transform.position) - ((Vector2)transform.position)), 1000);
+                    if (seen == "Player")
                     {
-                        Move(Front(0.7f));
-                        restartTimer = Time.timeSinceLevelLoad;
+                        if(fronter) Move(Front(0.7f)); 
+                        else Move(Back(0.7f));
+
                     }
                     else
-                        Move(Vector2.zero);
+                    {
+                        Move(FindClearWay(Follow()));
+                    }
                 }
                 else
                 {
-                    if (Look(Vector2.up) != "Trap") Move(Vector2.up);
-                    else if (Look(Vector2.down) != "Trap") Move(Vector2.up);
-                    else Move(Vector2.left);
+                    Move(Vector2.zero);
                 }
+                
 
 
             }
@@ -96,12 +102,75 @@ public class AI01 : Inimigo
 
     string Look(Vector2 dir, float dis = 1f) {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dis);
+        
 
         if (hit.transform != null)
         {
             return hit.transform.name;
         }
         return "null";
+    }
+
+    private Vector2 RotatedVector2D(Vector2 vector, float angle)
+    {
+        float x = vector.x * Mathf.Cos(angle) - vector.y * Mathf.Sin(angle);
+        float y = vector.y * Mathf.Cos(angle) + vector.x * Mathf.Sin(angle);
+
+        return new Vector2(x, y);
+    }
+
+    private Vector2 FindClearWay(Vector2 direction)
+    {
+        //Vector2 direction = Player.Instance.transform.position - transform.position;
+        Vector2 posRotated = direction;
+        Vector2 negRotated = direction;
+        float angleDelta = 0.1f;
+
+        if (direction == Vector2.zero)
+            return direction;
+
+        RaycastHit2D[] hitPos, hitNeg;
+        hitPos = Physics2D.RaycastAll(transform.position, direction);
+
+        foreach (RaycastHit2D hit in hitPos)
+        {
+            if ((hit.collider == null || hit.collider.gameObject.tag == "Player") && hitPos.Length == 1)
+                return direction.normalized;
+            //else
+            //{
+            //    Atack();
+            //    Debug.Log(hit.collider.gameObject.name);
+            //    Debug.Log(hit.collider.transform.position);
+
+            //}
+        }
+
+
+        while (angleDelta < 2 * Mathf.PI / 2)
+        {
+            posRotated = RotatedVector2D(direction, angleDelta);
+            negRotated = RotatedVector2D(direction, -angleDelta);
+
+            //hitPos = Physics2D.CircleCastAll(transform.position, 0.5f, posRotated, Mathf.Infinity, LayerMask.NameToLayer("Ignore Raycast"));
+            //hitNeg = Physics2D.CircleCastAll(transform.position, 0.5f, negRotated, Mathf.Infinity, LayerMask.NameToLayer("Ignore Raycast"));
+
+            hitPos = Physics2D.RaycastAll(transform.position, posRotated);
+            hitNeg = Physics2D.RaycastAll(transform.position, negRotated);
+
+            foreach (RaycastHit2D hit in hitPos)
+            {
+                if ((hit.collider == null || hit.collider.gameObject.tag == "Player") && hitPos.Length == 1)
+                    return posRotated.normalized;
+            }
+            foreach (RaycastHit2D hit in hitNeg)
+            {
+                if ((hit.collider == null || hit.collider.gameObject.tag == "Player") && hitPos.Length == 1)
+                    return negRotated.normalized;
+            }
+            angleDelta += angleDelta;
+        }
+
+        return posRotated.normalized;
     }
 
     private void Atack()

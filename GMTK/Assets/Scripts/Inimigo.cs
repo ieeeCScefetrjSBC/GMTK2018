@@ -8,6 +8,7 @@ public class Inimigo : MonoBehaviour {
     public float fireDamagePerSec = 5f;
     public float stunTime = 3f;
     public float onFireTime = 2f;
+    public float forceStun;
 
     private float health;
     private float timeWasStunned;
@@ -87,14 +88,14 @@ public class Inimigo : MonoBehaviour {
         isOnFire = false;
     }
 
-    public void Stop() {
+    public void Stop(Vector2 dir) {
         CancelInvoke();
         sp.sprite = Original;
         hitting = false;
         Player.Instance.defenceWindow = false;
         Player.Instance.Atacker.Remove(this);
         Stun(stunTime);
-        rb.AddForce(32005* (transform.position - Player.Instance.transform.position).normalized);
+        rb.AddForce(forceStun* dir.normalized);
     }
 
     public void Kill()
