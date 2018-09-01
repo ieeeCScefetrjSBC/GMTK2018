@@ -27,7 +27,7 @@ public class FirePit : MonoBehaviour {
         if (colliderTag == "Enemy")
         {
             Inimigo enemyScript = collision.gameObject.GetComponent<Inimigo>();
-            if (enemyScript.IsOnFire)
+            if (!enemyScript.IsOnFire)
                 enemyScript.SetOnFire();
         }
     }
