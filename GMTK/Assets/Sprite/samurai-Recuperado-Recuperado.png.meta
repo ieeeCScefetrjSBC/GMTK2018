@@ -1,0 +1,309 @@
+fileFormatVersion: 2
+guid: c8215722eaa01e94aacfa61bba4dfeac
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "Cabe\xE7a"
+    21300002: samurai-Recuperado-Recuperado_1
+    21300004: "Bra\xE7o Sup Direito"
+    21300006: "Bra\xE7o Inf Direito"
+    21300008: "Bast\xE3o"
+    21300010: "Bra\xE7o Sup Esquerdo"
+    21300012: samurai-Recuperado-Recuperado_0
+    21300014: "P\xE9 Esquerdo"
+    21300016: Perna Inf Esquerda
+    21300018: Perna Sup Esquerda
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Cabe\xE7a"
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1747
+        width: 715
+        height: 501
+      alignment: 9
+      pivot: {x: 0.41554275, y: 0.10930775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9be16acd1dda6478be0a542fe2eaa8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: samurai-Recuperado-Recuperado_1
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 1689
+        width: 155
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7edece6b4c0f00749aa835961aaecb21
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bra\xE7o Sup Direito"
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 667
+        width: 257
+        height: 488
+      alignment: 9
+      pivot: {x: 0.91167927, y: 0.831232}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ef6778e749545e49acb73973e5b0adc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bra\xE7o Inf Direito"
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 136
+        width: 261
+        height: 359
+      alignment: 9
+      pivot: {x: 0.22623464, y: 0.88562626}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ceea836e426a354ea403214a25afb54
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bast\xE3o"
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 78
+        width: 66
+        height: 2163
+      alignment: 9
+      pivot: {x: 0.49993342, y: 0.12950753}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd6e9a9f12955c4e84e0ddd0988f417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Bra\xE7o Sup Esquerdo"
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 132
+        width: 288
+        height: 471
+      alignment: 9
+      pivot: {x: 0.10793421, y: 0.8275246}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7baddf2b0b0532746b522697c0a8fdaf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: samurai-Recuperado-Recuperado_0
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 139
+        width: 289
+        height: 382
+      alignment: 9
+      pivot: {x: 0.23585863, y: 0.89966947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af6b0c257d7749408ad8e2901171f7c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "P\xE9 Esquerdo"
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 770
+        width: 314
+        height: 202
+      alignment: 9
+      pivot: {x: 0.294911, y: 0.85512096}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf42669b927686241a12d89b728ae583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Perna Inf Esquerda
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 1067
+        width: 176
+        height: 409
+      alignment: 9
+      pivot: {x: 0.48044586, y: 0.9111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ae829ad2117ad41bbcc9b63baced53
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Perna Sup Esquerda
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1533
+        width: 252
+        height: 392
+      alignment: 9
+      pivot: {x: 0.29410636, y: 0.80014014}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c0122928724a6438061015abf917c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 37bb2d4471cffa54cb2ae943e31204d2
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
