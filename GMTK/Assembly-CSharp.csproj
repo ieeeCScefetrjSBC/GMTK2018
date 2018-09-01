@@ -64,6 +64,8 @@
     <Compile Include="Assets\AI01.cs" />
     <Compile Include="Assets\Inimigo.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\Scripts\Inimigo.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Aluno/Desktop/GMTK2018/GMTK/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
