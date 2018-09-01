@@ -28,7 +28,7 @@ public class Spikes : MonoBehaviour
             e.Damage(damage);
           //  Debug.Log("")
 
-            e.Stun(stunTime);
+            e.Stun(stunTime); 
         }
 	}
 }
