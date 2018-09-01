@@ -7,15 +7,13 @@ public class Player : MonoBehaviour {
     [HideInInspector]
     public bool defenceWindow;
     [HideInInspector]
-    public Inimigo Atacker;
+    public List<Inimigo> Atacker;
 
     public float maxHealth = 100f;
     public float fireDamagePerSec = 5f;
     public float stunTime = 3f;
     public float onFireTime = 2f;
     private float health;
-    private float timeWasStunned;
-    private float timeSetOnFire;
 
     private bool isStunned = false;
     private bool isOnFire = false;
@@ -33,8 +31,6 @@ public class Player : MonoBehaviour {
     void Start()
     {
         health = maxHealth;
-        timeWasStunned = -stunTime;
-        timeSetOnFire = -onFireTime;
 
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
@@ -44,14 +40,10 @@ public class Player : MonoBehaviour {
     {
         
 
-        if (isStunned && Time.time - timeWasStunned > stunTime)
-            isStunned = false;
+       
 
         if (isOnFire)
         {
-            if (Time.time - timeSetOnFire > onFireTime)
-                isOnFire = false;
-            else
                 health -= fireDamagePerSec * Time.deltaTime;
         }
 
@@ -75,7 +67,9 @@ public class Player : MonoBehaviour {
     {
         if (canParry)
         {
-            if (defenceWindow) Atacker.Stop();
+            Inimigo[] Atackers = new Inimigo[Atacker.Count];
+            Atacker.CopyTo(Atackers);
+            if (defenceWindow) foreach(Inimigo At in Atackers) At.Stop();
         }
         canParry = false;
         Invoke("ReParry", parryDelay);
@@ -93,15 +87,26 @@ public class Player : MonoBehaviour {
 
     public void Stun(float stunTime)
     {
-        timeWasStunned = Time.time;
-        this.stunTime = stunTime;
+
         isStunned = true;
+        Invoke("UnStun", stunTime);
+
+    }
+
+    public void UnStun()
+    {
+        isStunned = false;
     }
 
     public void SetOnFire()
     {
-        timeSetOnFire = Time.time;
         isOnFire = true;
+        Invoke("UnSetOnFire", onFireTime);
+    }
+
+    public void UnSetOnFire()
+    {
+        isOnFire = false;
     }
 
     public void Kill()
