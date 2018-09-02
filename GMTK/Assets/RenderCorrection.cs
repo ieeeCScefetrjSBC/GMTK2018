@@ -24,7 +24,7 @@ public class RenderCorrection : MonoBehaviour {
                 int importante = 0;
                 Transform varTra = Everything[i].transform;
                 while (varTra.parent != null) { importante += (int)varTra.parent.position.y; varTra = varTra.parent; }
-                Everything[i].sortingOrder = (int)Everything[i].transform.position.y + importante + EveryOrder[i]; 
+                Everything[i].sortingOrder = (int)Everything[i].transform.position.y + importante + EveryOrder[i];  
             }
         }
 	}
