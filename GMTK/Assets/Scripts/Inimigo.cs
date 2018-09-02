@@ -14,7 +14,7 @@ public class Inimigo : MonoBehaviour {
     private float timeWasStunned;
     private bool right;
     private Vector3 facingOld;
-    private Vector3 facingNew;
+    private Vector3 facingNew; 
 
 
     protected bool isStunned = false;
