@@ -12,6 +12,10 @@ public class Inimigo : MonoBehaviour {
 
     private float health;
     private float timeWasStunned;
+    private bool right;
+    private Vector3 facingOld;
+    private Vector3 facingNew;
+
 
     protected bool isStunned = false;
     public bool isOnFire = false;
@@ -33,10 +37,18 @@ public class Inimigo : MonoBehaviour {
     public void StartCode()
     {
         health = maxHealth;
+        facingOld = transform.localScale;
+        facingNew = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
     public void UpdateCode()
     {
+
+        if (rb.velocity.x != 0) right = rb.velocity.x > 0;
+
+        if (right) transform.localScale = facingOld;
+        else transform.localScale = facingNew;
+
 
         if (isOnFire)
         {
@@ -102,9 +114,4 @@ public class Inimigo : MonoBehaviour {
     {
         Destroy(this.gameObject);
     }
-
-
-
-
-
 }
