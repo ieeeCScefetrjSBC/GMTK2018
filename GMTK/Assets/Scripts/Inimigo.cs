@@ -9,6 +9,7 @@ public class Inimigo : MonoBehaviour {
     public float stunTime = 3f;
     public float onFireTime = 2f;
     public float forceStun;
+    public float damageCaused = 20f;
 
     private float health;
     private float timeWasStunned;

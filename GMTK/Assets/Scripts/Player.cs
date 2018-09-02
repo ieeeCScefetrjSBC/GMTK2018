@@ -93,59 +93,63 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Vector2 vel = Vector2.zero;
-        if (Input.GetKey(KeyCode.W)) vel += Vector2.up;
-        if (Input.GetKey(KeyCode.S)) vel += Vector2.down;
-        if (Input.GetKey(KeyCode.A)) vel += Vector2.left;
-        if (Input.GetKey(KeyCode.D)) vel += Vector2.right;
+        
 
-        if (vel.x != 0) right = vel.x > 0;
+            Vector2 vel = Vector2.zero;
+            if (Input.GetKey(KeyCode.W)) vel += Vector2.up;
+            if (Input.GetKey(KeyCode.S)) vel += Vector2.down;
+            if (Input.GetKey(KeyCode.A)) vel += Vector2.left;
+            if (Input.GetKey(KeyCode.D)) vel += Vector2.right;
 
-        if (vel != Vector2.zero)
-        {
-            rightAnim.SetBool("Walking", true);
-            leftAnim.SetBool("Walking", true);
-        }
-        else {
-            rightAnim.SetBool("Walking", false);
-            leftAnim.SetBool("Walking", false);
-        }
+            if (vel.x != 0) right = vel.x > 0;
 
-        if (!Dodging)
-        {
-            rb.velocity = vel.normalized * Vel;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return)) Parry();
-
-        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.magnitude > 0.1f)
-        {
-            rightAnim.SetBool("Dash", true);
-            leftAnim.SetBool("Dash", true);
-            Dodging = true;
-           // Debug.Log("OPA");
-            TimerActive = true;
-            Vector2 direction = this.gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
-            if (Input.GetKeyDown(KeyCode.Return) && Timer < TimeToDParry)
+            if (vel != Vector2.zero)
             {
-                DParry(direction);
-                Timer = 0;
-                TimerActive = false;
-            }
-            else if (Input.GetKeyDown(KeyCode.Return) && Timer > TimeToDParry)
-            {
-                Dodge(direction);
-                Timer = 0;
-                TimerActive = false;
-                Debug.Log(this.gameObject.GetComponent<Rigidbody2D>().velocity);
+                rightAnim.SetBool("Walking", true);
+                leftAnim.SetBool("Walking", true);
             }
             else
             {
-                Dodge(direction);
-                Timer = 0;
-                TimerActive = false;
+                rightAnim.SetBool("Walking", false);
+                leftAnim.SetBool("Walking", false);
             }
-        }
+
+            if (!Dodging)
+            {
+                rb.velocity = vel.normalized * Vel;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return)) Parry();
+
+            if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.magnitude > 0.1f)
+            {
+                rightAnim.SetBool("Dash", true);
+                leftAnim.SetBool("Dash", true);
+                Dodging = true;
+                // Debug.Log("OPA");
+                TimerActive = true;
+                Vector2 direction = this.gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
+                if (Input.GetKeyDown(KeyCode.Return) && Timer < TimeToDParry)
+                {
+                    DParry(direction);
+                    Timer = 0;
+                    TimerActive = false;
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && Timer > TimeToDParry)
+                {
+                    Dodge(direction);
+                    Timer = 0;
+                    TimerActive = false;
+                    Debug.Log(this.gameObject.GetComponent<Rigidbody2D>().velocity);
+                }
+                else
+                {
+                    Dodge(direction);
+                    Timer = 0;
+                    TimerActive = false;
+                }
+            }
+        
     }
 
     public void Parry()
@@ -156,10 +160,22 @@ public class Player : MonoBehaviour {
             leftAnim.SetBool("Parry", true);
             Inimigo[] Atackers = new Inimigo[Atacker.Count];
             Atacker.CopyTo(Atackers);
-            if (defenceWindow) foreach(Inimigo At in Atackers) At.Stop( (Dodging) ? (Player.Instance.transform.position - At.transform.position) : (At.transform.position - Player.Instance.transform.position));
+            if (defenceWindow)
+            {
+                rightAnim.SetBool("Enemy Attack", true);
+                leftAnim.SetBool("Enemy Attack", true);
+                Invoke("ReT", 0.9f);
+                foreach (Inimigo At in Atackers) At.Stop((Dodging) ? (Player.Instance.transform.position - At.transform.position) : (At.transform.position - Player.Instance.transform.position));
+            }
         }
         canParry = false;
         Invoke("ReParry", parryDelay);
+    }
+
+    public void ReT()
+    {
+        rightAnim.SetBool("Enemy Attack", false);
+        leftAnim.SetBool("Enemy Attack", false);
     }
 
     public void ReParry()
@@ -217,7 +233,10 @@ public class Player : MonoBehaviour {
 
     public void Kill()
     {
-        Destroy(this.gameObject);
+        transform.rotation = Quaternion.EulerAngles(0,0,90);
+        rightAnim.enabled = false;
+        leftAnim.enabled = false;
+        this.enabled = false;
     }
 
     public void Dodge(Vector2 direction)
