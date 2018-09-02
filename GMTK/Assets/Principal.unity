@@ -1269,6 +1269,7 @@ MonoBehaviour:
   stunTime: 0.1
   onFireTime: 2
   forceStun: 300000
+  damageCaused: 20
   isOnFire: 0
   sp: {fileID: 597736966}
   Ataque: {fileID: 21300056, guid: 848fe009912a92f44b8b3cd4bea9235e, type: 3}
