@@ -57,6 +57,7 @@ public class AI01 : Inimigo
         int Turn = (int)(walkingTime + thinkingTime);
 
         if (!isStunned)
+        if (!isStunned && Player.Instance.enabled)
         {
             if (!possibleHit)
             {
@@ -179,15 +180,29 @@ public class AI01 : Inimigo
         Player.Instance.defenceWindow = true;
         Player.Instance.Atacker.Add(this);
         Invoke("AtackEnd", tellTime);
+        if (Player.Instance.enabled)
+        {
+            sp.sprite = Ataque;
+            Player.Instance.defenceWindow = true;
+            Player.Instance.Atacker.Add(this);
+            Invoke("AtackEnd", tellTime);
+        }
     }
 
     private void AtackEnd()
     {
         sp.sprite = Original;
         hitting = false;
-        Player.Instance.defenceWindow = false;
+        
+            
         Player.Instance.Atacker.Remove(this);
+        Player.Instance.defenceWindow = Player.Instance.Atacker.Count > 0;
         thinkingTimer = Time.timeSinceLevelLoad;
+
+        if (possibleHit)
+        {
+            Player.Instance.Damage(damageCaused);
+        }
     }
 
     private Vector2 Follow()
