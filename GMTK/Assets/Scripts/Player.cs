@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     private float TimeDodge = 0.4f;
     private float DTimer = 0;
 
+    private bool right = true;
     private bool isStunned = false;
     private bool isOnFire = false;
     private bool canParry = true;
@@ -39,6 +40,12 @@ public class Player : MonoBehaviour {
 
     public Collider2D coli;
 
+    public GameObject rightPlayer;
+    public GameObject leftPlayer;
+
+    Animator rightAnim;
+    Animator leftAnim;
+
     Rigidbody2D rb;
 
     void Start()
@@ -47,12 +54,16 @@ public class Player : MonoBehaviour {
 
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
+
+        rightAnim = rightPlayer.GetComponent<Animator>();
+        leftAnim = leftPlayer.GetComponent<Animator>();
     }
 
     void Update()
     {
-        
 
+        if (right) { rightPlayer.SetActive(true); leftPlayer.SetActive(false); }
+        else { rightPlayer.SetActive(false); leftPlayer.SetActive(true); }
        
 
         if (isOnFire)
@@ -88,15 +99,29 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.A)) vel += Vector2.left;
         if (Input.GetKey(KeyCode.D)) vel += Vector2.right;
 
+        if (vel.x != 0) right = vel.x > 0;
+
+        if (vel != Vector2.zero)
+        {
+            rightAnim.SetBool("Walking", true);
+            leftAnim.SetBool("Walking", true);
+        }
+        else {
+            rightAnim.SetBool("Walking", false);
+            leftAnim.SetBool("Walking", false);
+        }
+
         if (!Dodging)
         {
             rb.velocity = vel.normalized * Vel;
         }
 
-        if (Input.GetKey(KeyCode.Return)) Parry();
+        if (Input.GetKeyDown(KeyCode.Return)) Parry();
 
         if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.magnitude > 0.1f)
         {
+            rightAnim.SetBool("Dash", true);
+            leftAnim.SetBool("Dash", true);
             Dodging = true;
            // Debug.Log("OPA");
             TimerActive = true;
@@ -127,6 +152,8 @@ public class Player : MonoBehaviour {
     {
         if (canParry)
         {
+            rightAnim.SetBool("Parry", true);
+            leftAnim.SetBool("Parry", true);
             Inimigo[] Atackers = new Inimigo[Atacker.Count];
             Atacker.CopyTo(Atackers);
             if (defenceWindow) foreach(Inimigo At in Atackers) At.Stop( (Dodging) ? (Player.Instance.transform.position - At.transform.position) : (At.transform.position - Player.Instance.transform.position));
@@ -138,16 +165,24 @@ public class Player : MonoBehaviour {
     public void ReParry()
     {
         canParry = true;
+        rightAnim.SetBool("Parry", false);
+        leftAnim.SetBool("Parry", false);
     }
 
     public void ReDodge()
     {
         canDodge = true;
+        rightAnim.SetBool("Dash", false);
+        leftAnim.SetBool("Dash", false);
     }
 
     public void ReDParry()
     {
         canDParry = true;
+        rightAnim.SetBool("Parry", false);
+        leftAnim.SetBool("Parry", false);
+        rightAnim.SetBool("Dash", false);
+        leftAnim.SetBool("Dash", false);
     }
 
 

@@ -51,3 +51,9 @@ TagManager:
   - name: Raphael
     uniqueID: 945376967
     locked: 0
+  - name: Donald
+    uniqueID: 3480816391
+    locked: 0
+  - name: New Layer
+    uniqueID: 451361845
+    locked: 0

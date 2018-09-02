@@ -411,7 +411,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 1
   orthographic size: 10
@@ -437,7 +437,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1253,6 +1253,8 @@ MonoBehaviour:
   DodgeDelay: 0.55
   DParryDelay: 0.55
   coli: {fileID: 2121021948}
+  rightPlayer: {fileID: 0}
+  leftPlayer: {fileID: 0}
 --- !u!58 &2121021948
 CircleCollider2D:
   m_ObjectHideFlags: 0
